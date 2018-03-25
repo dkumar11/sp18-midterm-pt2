@@ -72,6 +72,8 @@ class App extends Component {
       if (error) {
         console.log(error);
       } else {
+      	console.log(result);
+		that.setState({events: [...that.state.events, result.event]});
         /// YOUR CODE HERE -- what do we need to do if we want to log a component?
         /// 'result.event' will give you the event itself, so try adding that to the 
         /// list of events we are tracking in the state object. REMEMBER TO USE 'that'
@@ -84,7 +86,7 @@ class App extends Component {
       if (error) {
         console.log(error);
       } else {
-        /// YOUR CODE HERE -- same instructions as above
+		    that.setState({events: [...that.state.events, result.event]});
       }
     })
 
@@ -92,15 +94,15 @@ class App extends Component {
       if (error) {
         console.log(error);
       } else {
-        /// YOUR CODE HERE -- same instructions as above
+		    that.setState({events: [...that.state.events, result.event]});
       }
     })
 
     transactionSignedEvent.watch(function(error, result) {
       if (error) {
         console.log(error);
-      } else {
-        /// YOUR CODE HERE -- same instructions as above
+	  } else {
+		    that.setState({events: [...that.state.events, result.event]});
       }
     })
   }
@@ -110,7 +112,7 @@ class App extends Component {
   /// state (i.e. 'this.state.web3.....'). You'll want to use the 'sendTransaction'
   /// function, which is documented here -- https://github.com/ethereum/wiki/wiki/JavaScript-API#web3ethsendtransaction
   sendEther() {
-    /// YOUR CODE HERE. This should only be 1 line.
+	this.state.web3.eth.sendTransaction({ to: this.state.multiSigContract.address, value: 100});
   }
 
   render() {
